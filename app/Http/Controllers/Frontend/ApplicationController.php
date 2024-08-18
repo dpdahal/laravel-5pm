@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
@@ -11,7 +12,8 @@ class ApplicationController extends Controller
 
     public function index()
     {
-        return view($this->_pagePath.'home');
+        $newsData= News::all();
+        return view($this->_pagePath.'home',compact('newsData'));
     }
     public function about()
     {
