@@ -154,23 +154,18 @@
                 <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
+                            <h1 class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
                                 <svg class="bi"><use xlink:href="#house-fill"/></svg>
                                 {{auth()->user()->name}}
-                            </a>
+                            </h1>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
+                            <a class="nav-link d-flex align-items-center gap-2" href="{{route('users')}}">
                                 <svg class="bi"><use xlink:href="#file-earmark"/></svg>
-                                Orders
+                                Users
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi"><use xlink:href="#cart"/></svg>
-                                Products
-                            </a>
-                        </li>
+
 
                     </ul>
 
@@ -179,12 +174,7 @@
                     <hr class="my-3">
 
                     <ul class="nav flex-column mb-auto">
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
-                                Settings
-                            </a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link d-flex align-items-center gap-2" href="{{route('logout')}}">
                                 <svg class="bi"><use xlink:href="#door-closed"/></svg>
@@ -198,7 +188,6 @@
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
                 @yield('content')
             </div>
 
