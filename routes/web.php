@@ -18,5 +18,10 @@ Route::any('/register', [LoginController::class, 'register'])->name('register');
 Route::group(['namespace' => 'Backend', 'prefix' => 'company-backend', 'middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-    Route::get('/users', [UserController::class, 'index'])->name('users');
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', [UserController::class, 'index'])->name('users');
+        Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
+        Route::post('/{id}/edit', [UserController::class, 'update']);
+        Route::get('/{id}/delete', [UserController::class, 'delete'])->name('delete');
+    });
 });

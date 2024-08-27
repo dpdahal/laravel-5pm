@@ -4,6 +4,19 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>User list</h1>
+                @include('lib.message')
+            </div>
+            <div class="row">
+                <form action="{{route('users')}}">
+                    <div class="row mb-3">
+                        <div class="col-md-10">
+                            <input type="search" name="search" class="form-control" required>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="col-md-12">
                 <table class="table table-hover">
@@ -32,18 +45,19 @@
                                     <img src="{{url($user->image)}}" alt="" style="width: 100px">
                                 @endif
                             </td>
-                            <td>{{$user->created_at}}</td>
-                            <td>{{$user->updated_at}}</td>
+                            <td>{{$user->created_at->diffForHumans()}}</td>
+                            <td>{{$user->updated_at->format('Y-m-d')}}</td>
                             <td>
-                                <a href="" class="btn btn-primary">Edit</a>
-                                <a href="" class="btn btn-danger">Delete</a>
-                            </td>
-
-
-                        </tr>
+                                <a href="{{route('edit',$user->id)}}" class="btn btn-primary">Edit</a>
+                                <a href="{{route('delete',$user->id)}}"
+                                   onclick="return confirm('Are you sure?')"
+                                   class="btn btn-danger">Delete</a>
+                            </td>  </tr>
                     </tbody>
                     @endforeach
                 </table>
+                <hr>
+                {{$usersData->links()}}
             </div>
         </div>
     </div>
